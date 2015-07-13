@@ -1,11 +1,62 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Practica2">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".Practica2">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopLogin"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="@dimen/usuarioWidth"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/marginLeftLogin"
+            android:text="@string/nombreST"
+            android:textSize="@dimen/textSize"
+            android:textStyle="bold"
+            android:id="@+id/nombreXML" />
 
-</RelativeLayout>
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:inputType="textEmailAddress"
+            android:hint="@string/correoST"
+            android:id="@+id/correoXML"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopLogin"
+        android:orientation="horizontal">
+        <TextView
+            android:text="@string/passwordST"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/marginLeftLogin"
+            android:textSize="@dimen/textSize"
+            android:textStyle="bold"
+            android:id="@+id/passwordXML"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/passwordSTm"
+            android:id="@+id/passwordIputXML"
+            />
+    </LinearLayout>
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopBoton"
+        android:drawableLeft="@drawable/ic_supervisor_account_black_24dp"
+        android:text="@string/iniciarSesion"
+        android:textStyle="bold"/>
+</LinearLayout>

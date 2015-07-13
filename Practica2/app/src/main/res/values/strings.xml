@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">Practica2</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Conexion DNS</string>
+    <string name="nombreST">Usuario: </string>
+    <string name="passwordST">Contraseña: </string>
+    <string name="correoST">example@host.com</string>
+    <string name="passwordSTm">Ingresa tu contraseña</string>
+    <string name="iniciarSesion">Iniciar Sesion</string>
     <string name="action_settings">Settings</string>
+
 </resources>
