@@ -1,10 +1,23 @@
 <resources>
+    <!-- segunda actividad-->
     <string name="app_name">Conexion DNS</string>
     <string name="nombreST">Usuario: </string>
     <string name="passwordST">Contraseña: </string>
     <string name="correoST">example@host.com</string>
     <string name="passwordSTm">Ingresa tu contraseña</string>
     <string name="iniciarSesion">Iniciar Sesion</string>
-    <string name="action_settings">Settings</string>
+    <!-- segunda actividad-->
+    <string name="title_activity_menus">Conexion DNS</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="mapas">Mapa</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Fragmento de configuracion  -->
+    <string name="numeroSTHint">Numero telefonico...</string>
+    <string name="nombreHostSTHint">Host: www.ejemplo.com</string>
+    <string name="notificacionesST">Mostrar en Notificaciones</string>
+    <string name="procesoST">Proceso Automatico</string>
+    <string name="nombreBotonConf">Inciar Proceso</string>
+    <!--Fragmento de mapas -->
 
 </resources>

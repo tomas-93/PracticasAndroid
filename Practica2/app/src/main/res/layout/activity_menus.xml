@@ -1,0 +1,18 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menus"
+    tools:context="mensajeria.tomas.com.practica2.Menus">
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="mensajeria.tomas.com.practica2.fragment.Configuracion"
+        android:id="@+id/configuracion"/>
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="mensajeria.tomas.com.practica2.fragment.Maps"
+        android:id="@+id/maps"/>
+</RelativeLayout>

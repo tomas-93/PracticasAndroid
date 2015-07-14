@@ -7,4 +7,9 @@
     <dimen name="marginTopLogin">20dp</dimen>
     <dimen name="marginTopBoton">50dp</dimen>
     <dimen name="usuarioWidth">100dp</dimen>
+    <!-- Dimenciones de los fragmentos  configuracion-->
+    <dimen name="sizePadding">10dp</dimen>
+    <dimen name="marginTopConfiguracion">25dp</dimen>
+    <dimen name="sizeComponentes">25dp</dimen>
+    <dimen name="sizeBoton">20dp</dimen>
 </resources>
