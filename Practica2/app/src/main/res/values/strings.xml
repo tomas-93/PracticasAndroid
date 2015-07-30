@@ -1,12 +1,6 @@
 <resources>
-    <!-- segunda actividad-->
+    <!-- primera actividad-->
     <string name="app_name">Conexion DNS</string>
-    <string name="nombreST">Usuario: </string>
-    <string name="passwordST">Contraseña: </string>
-    <string name="correoST">example@host.com</string>
-    <string name="passwordSTm">Ingresa tu contraseña</string>
-    <string name="iniciarSesion">Iniciar Sesion</string>
-    <!-- segunda actividad-->
     <string name="title_activity_menus">Conexion DNS</string>
     <string name="configuracion">Configuracion</string>
     <string name="mapas">Mapa</string>
@@ -14,10 +8,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <!-- Fragmento de configuracion  -->
     <string name="numeroSTHint">Numero telefonico...</string>
-    <string name="nombreHostSTHint">Host: www.ejemplo.com</string>
-    <string name="notificacionesST">Mostrar en Notificaciones</string>
-    <string name="procesoST">Proceso Automatico</string>
-    <string name="nombreBotonConf">Inciar Proceso</string>
+    <string name="nombreHostSTHint">http://dominio/maps.php</string>
+    <string name="nombreBotonConf">Nuevos Datos</string>
+    <string name="conectarST">Status</string>
+    <string name="instruccionXML">Ingrese el mismo nombre del dominio pero esta vez con el modulo el cual este creado solo para probar la conexion del servidor</string>
+    <string name="nombreHoststatusSTHint">http://dominio/status.php</string>
     <!--Fragmento de mapas -->
 
 </resources>

@@ -3,13 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="textSize">18sp</dimen>
-    <dimen name="marginLeftLogin">10dp</dimen>
-    <dimen name="marginTopLogin">20dp</dimen>
     <dimen name="marginTopBoton">50dp</dimen>
-    <dimen name="usuarioWidth">100dp</dimen>
     <!-- Dimenciones de los fragmentos  configuracion-->
-    <dimen name="sizePadding">10dp</dimen>
-    <dimen name="marginTopConfiguracion">25dp</dimen>
-    <dimen name="sizeComponentes">25dp</dimen>
-    <dimen name="sizeBoton">20dp</dimen>
+    <dimen name="sizePadding">5dp</dimen>
+    <dimen name="marginTopConfiguracion">20dp</dimen>
+    <dimen name="sizeComponentes">18dp</dimen>
+    <dimen name="sizeBoton">18dp</dimen>
 </resources>

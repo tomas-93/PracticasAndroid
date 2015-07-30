@@ -1,4 +1,4 @@
-package mensajeria.tomas.com.practica2.fragment;
+package mensajeria.tomas.com.practica2.view.fragment;
 
 
 import android.os.Bundle;
@@ -12,17 +12,20 @@ import mensajeria.tomas.com.practica2.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Maps extends Fragment {
+public class Maps extends Fragment
+{
 
 
-    public Maps() {
+    public Maps()
+    {
         // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_maps, container, false);
     }

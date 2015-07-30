@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mensajeria.tomas.com.practica2.fragment.Maps">
+    tools:context="mensajeria.tomas.com.practica2.view.fragment.Maps">
 
     <!-- TODO: Update blank fragment layout -->
 </FrameLayout>

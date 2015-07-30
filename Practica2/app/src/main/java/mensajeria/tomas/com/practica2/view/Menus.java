@@ -1,7 +1,8 @@
-package mensajeria.tomas.com.practica2;
+package mensajeria.tomas.com.practica2.view;
 
-import mensajeria.tomas.com.practica2.fragment.Configuracion;
-import mensajeria.tomas.com.practica2.fragment.Maps;
+import mensajeria.tomas.com.practica2.R;
+import mensajeria.tomas.com.practica2.view.fragment.Configuracion;
+import mensajeria.tomas.com.practica2.view.fragment.Maps;
 
 import android.app.Activity;
 import android.app.ActionBar;
@@ -9,17 +10,19 @@ import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.app.FragmentManager;
 import android.app.Fragment;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 
 
 public class Menus extends Activity implements TabListener
 {
-    private final Fragment arrayFragment[]={new Configuracion(),new Maps()};
+    private final Fragment arrayFragment[] = {new Configuracion(), new Maps()};
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         this.setContentView(R.layout.activity_menus);
         //Configuracion de tabs
         this.configTabs();
@@ -28,6 +31,7 @@ public class Menus extends Activity implements TabListener
         this.configView();
 
     }
+
     private void configTabs()
     {
         //navegacion pestañas
