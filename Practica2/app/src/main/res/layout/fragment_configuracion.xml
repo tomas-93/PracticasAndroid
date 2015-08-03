@@ -28,6 +28,28 @@
                 android:layout_marginTop="@dimen/marginTopConfiguracion"
                 android:hint="@string/nombreHostSTHint"
                 android:textSize="@dimen/textSize"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"
+                android:text="@string/instruccionXML"
+                android:textSize="@dimen/textSize"
+                android:textStyle="bold"
+                android:id="@+id/mensajeHostStatusXML"/>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"
+                android:hint="@string/nombreHoststatusSTHint"
+                android:textSize="@dimen/textSize"
+                android:id="@+id/hostStatusXML"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"
+                android:text="@string/conectarST"
+                android:textSize="@dimen/sizeBoton"
+                android:id="@+id/connecXML" />
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -36,26 +58,6 @@
                 android:text="@string/nombreBotonConf"
                 android:textSize="@dimen/sizeBoton"
                 android:id="@+id/buttonProcessXML"/>
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginTopConfiguracion"
-                android:text="@string/instruccionXML"
-                android:textSize="@dimen/textSize"
-                android:textStyle="bold"/>
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginTopConfiguracion"
-                android:hint="@string/nombreHoststatusSTHint"
-                android:textSize="@dimen/textSize"/>
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginTopConfiguracion"
-                android:text="@string/conectarST"
-                android:textSize="@dimen/sizeBoton"
-                android:id="@+id/connecXML" />
 
             <TextView
                 android:layout_height="fill_parent"

@@ -13,9 +13,11 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.database.Cursor;
 
+import mensajeria.tomas.com.practica2.models.object.Config;
+import mensajeria.tomas.com.practica2.models.sql.ManagerSQL;
 import mensajeria.tomas.com.practica2.controler.connect_server.HttpHandler;
 import mensajeria.tomas.com.practica2.R;
-import mensajeria.tomas.com.practica2.models.sql.ManagerSQL;
+
 
 
 /**
@@ -23,14 +25,16 @@ import mensajeria.tomas.com.practica2.models.sql.ManagerSQL;
  */
 public class Configuracion extends Fragment implements OnClickListener
 {
-    private EditText numberPhone, host;
+    private EditText numberPhone, host, hostStatus;
     private TextView textViewMessage;
     private Button buttonProcess, connect;
     private ManagerSQL managerSQL;
+    private Config config;
 
     public Configuracion()
     {
         // Required empty public constructor
+        this.config = new Config();
     }
 
     @Override
@@ -48,6 +52,7 @@ public class Configuracion extends Fragment implements OnClickListener
 
         this.numberPhone = (EditText) viewConteiner.findViewById(R.id.numberPhoneXML);
         this.host = (EditText) viewConteiner.findViewById(R.id.hostXML);
+        this.hostStatus = (EditText) viewConteiner.findViewById(R.id.hostStatusXML);
         this.textViewMessage = (TextView) viewConteiner.findViewById(R.id.mesanjeXML);
         this.buttonProcess = (Button) viewConteiner.findViewById(R.id.buttonProcessXML);
         this.connect = (Button)  viewConteiner.findViewById(R.id.connecXML);
@@ -73,7 +78,18 @@ public class Configuracion extends Fragment implements OnClickListener
             this.readDate();
         }else if(view.getId() == this.connect.getId())
         {
-            new HttpHandler("http://192.168.0.2/tomasyussef/models/android/status.php").execute();
+            if(this.config.getHostStatus() != null || this.config.getHostStatus() != "")
+            {
+                new HttpHandler(this.config.getHostStatus(), this.textViewMessage, this.config).execute();
+            }else
+            {
+                String message = "Elementos Guardados\n\n"
+                               + "Telefono: \n" + config.getPhone()
+                               + "\n\nHost:\n" + config.getHost()
+                               + "\n\nHostStatus:\n"
+                               + "No existe Dominio de Status, no se puede hacer pruebas de conexion.";
+                this.textViewMessage.setText(message);
+            }
         }
 
     }
@@ -87,9 +103,11 @@ public class Configuracion extends Fragment implements OnClickListener
 
     private void saveDateinDataBase()
     {
+        int id = 1;
         String phone = (String) this.numberPhone.getText().toString();
         String host = (String) this.host.getText().toString();
-        this.managerSQL.insertIntoTableConfig(1,phone,host);
+        String hostStatus = (String) this.hostStatus.getText().toString();
+        this.managerSQL.insertIntoTableConfig(id, phone ,host, hostStatus);
     }
 
     private void readDate()
@@ -98,8 +116,8 @@ public class Configuracion extends Fragment implements OnClickListener
         {
             String args [] = { "1" };
             Cursor cursor = this.managerSQL.readDateIntoTableConfig("idCofig", args);
-            String elements [] = this.managerSQL.readCursor(cursor);
-            String message = "Elementos Guardados\n" + "Telefono: " + elements[0]+ "\nHost:" + elements[1];
+            this.config = this.managerSQL.readCursorConfig(cursor);
+            String message = "Elementos Guardados\n\n" + "Telefono: \n" + config.getPhone() + "\n\nHost:\n" + config.getHost() + "\n\nHostStatus:\n" + config.getHostStatus();
             this.textViewMessage.setText(message);
         }catch (android.database.CursorIndexOutOfBoundsException ex)
         {}

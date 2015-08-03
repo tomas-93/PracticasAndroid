@@ -3,12 +3,14 @@ package mensajeria.tomas.com.practica2.models.sql;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
+
 import android.content.ContentValues;
 import android.content.Context;
 
-import android.database.sqlite.SQLiteConstraintException;
 import android.widget.Toast;
 
+import mensajeria.tomas.com.practica2.models.object.Message;
+import mensajeria.tomas.com.practica2.models.object.Config;
 /**
  * Created by Tomas on 25/07/2015.
  */
@@ -22,6 +24,7 @@ public class ManagerSQL
         this.database = new DataBase(context);
         this.managerDataBase = this.database.getWritableDatabase();
     }
+    public ManagerSQL(){}
 
     public long insertIntoTableMessage(int idMessage, String date, String latitude, String longitude,
                                        String altitude)
@@ -38,7 +41,7 @@ public class ManagerSQL
 
     }
 
-    public long insertIntoTableConfig(int idConfig, String phone, String host)
+    public long insertIntoTableConfig(int idConfig, String phone, String host, String hostStatus)
     {
         this.managerDataBase.execSQL(SchemaContract.DELETE_TABLE_CONFIG);
         this.managerDataBase.execSQL(SchemaContract.CREATE_TABLE_CONFIG);
@@ -46,6 +49,7 @@ public class ManagerSQL
         VALUES.put(SchemaContract.COLUMN_NAME_ID_CONFIG, idConfig);
         VALUES.put(SchemaContract.COLUMN_NAME_PHONE, phone);
         VALUES.put(SchemaContract.COLUMN_NAME_HOST, host);
+        VALUES.put(SchemaContract.COLUMN_NAME_HOST_STATUS, hostStatus);
         return this.managerDataBase.insert(SchemaContract.TABLE_NAME_CONFIG,
                 SchemaContract.COLUMN_NAME_NULLABLE,
                 VALUES);
@@ -56,7 +60,8 @@ public class ManagerSQL
         final String COLUMNS [] = {
                                     SchemaContract.COLUMN_NAME_ID_CONFIG,
                                     SchemaContract.COLUMN_NAME_PHONE,
-                                    SchemaContract.COLUMN_NAME_HOST
+                                    SchemaContract.COLUMN_NAME_HOST,
+                                    SchemaContract.COLUMN_NAME_HOST_STATUS
                                  };
         String where = "";
         if(column.equalsIgnoreCase(SchemaContract.COLUMN_NAME_ID_CONFIG))
@@ -138,14 +143,15 @@ public class ManagerSQL
                 SELECT_COLUMN,
                 SELECT_ARGS);
     }
-    public String [] readCursor(Cursor elements)
+    public Config readCursorConfig(Cursor elements)
     {
+        Config config = new Config();
         elements.moveToFirst();
-        String phone = elements.getString(elements.getColumnIndexOrThrow(SchemaContract.COLUMN_NAME_PHONE));
-        String host = elements.getString(elements.getColumnIndexOrThrow(SchemaContract.COLUMN_NAME_HOST));
-        String args [] = {phone, host};
+        config.setPhone(elements.getString(elements.getColumnIndexOrThrow(SchemaContract.COLUMN_NAME_PHONE)));//Verificcar si no sale error
+        config.setHost(elements.getString(elements.getColumnIndexOrThrow(SchemaContract.COLUMN_NAME_HOST)));
+        config.setHostStatus(elements.getString(elements.getColumnIndexOrThrow(SchemaContract.COLUMN_NAME_HOST_STATUS)));
         elements.close();
-        return args;
+        return config;
     }
 
 

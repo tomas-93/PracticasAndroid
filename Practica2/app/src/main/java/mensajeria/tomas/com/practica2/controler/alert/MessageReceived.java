@@ -1,22 +1,32 @@
 package mensajeria.tomas.com.practica2.controler.alert;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Telephony;
 import android.telephony.SmsMessage;
 import android.database.Cursor;
+import android.widget.TextView;
 
+
+import mensajeria.tomas.com.practica2.models.object.Config;
+import mensajeria.tomas.com.practica2.models.object.Message;
 import mensajeria.tomas.com.practica2.controler.connect_server.HttpHandler;
 import mensajeria.tomas.com.practica2.models.sql.ManagerSQL;
+import mensajeria.tomas.com.practica2.models.sql.SchemaContract;
+import mensajeria.tomas.com.practica2.R;
 
 
 public class MessageReceived extends BroadcastReceiver
 {
+    private TextView textViewMessage;
     private ManagerSQL dataBase;
+    private Message message;
+    private Config config;
 
-    public MessageReceived()
-    {    }
+    public MessageReceived(){}
+    
 
     @Override
     public void onReceive(Context context, Intent intent)
@@ -25,12 +35,12 @@ public class MessageReceived extends BroadcastReceiver
         // an Intent broadcast.
         this.dataBase = new ManagerSQL(context);
         final SmsMessage SMS [] = this.getMessageReceiver(intent);
-        final String DATA_CONFIG [] = this.getDataTableConfig();
-        if(DATA_CONFIG[0].equalsIgnoreCase(SMS[0].getOriginatingAddress()))
+        this.textViewMessage = (TextView) (((Activity)context).getWindow().getDecorView().findViewById(R.id.mesanjeXML));
+        if(this.config.getPhone().equalsIgnoreCase(SMS[0].getOriginatingAddress()))
         {
-            String DATA_MESSAGE [] = this.getDataMessage(SMS);
-            String url = this.encodeURL(DATA_CONFIG, DATA_MESSAGE);
-            new HttpHandler(url).execute();
+            this.getDataTableConfig();
+            this.getDataMessage(SMS);
+            new HttpHandler(this.encodeURL(), this.textViewMessage, this.config).execute();
         }
     }
 
@@ -38,57 +48,48 @@ public class MessageReceived extends BroadcastReceiver
     {
        return Telephony.Sms.Intents.getMessagesFromIntent(intent);
     }
-    private String[] getDataTableConfig()
+    private void getDataTableConfig()
     {
         String args[] = {"1"};
-        Cursor cursor = this.dataBase.readDateIntoTableConfig("idCofig", args);
-        return this.dataBase.readCursor(cursor);
+        Cursor cursor = this.dataBase.readDateIntoTableConfig(SchemaContract.COLUMN_NAME_ID_CONFIG, args);
+        this.config = this.dataBase.readCursorConfig(cursor);
     }
 
-    private String[] getDataMessage(SmsMessage[] sms)
+    private void getDataMessage(SmsMessage[] sms)
     {
         final String LATITUDE = "Latitud", LONGITUDE ="Longitud",
                      ALTITUDE ="Altitud", SPEED = "Speed";
-        final String [] SPLIT = sms[0].getDisplayMessageBody().split(" ")
-                ,ELEMENT = new String[4];
+        final String [] SPLIT = sms[0].getDisplayMessageBody().split(" ");
+        this.message = new Message();
 
         for(int contSecond = 0, contFirst = 0; contSecond < SPLIT.length; contSecond++)
         {
             SPLIT[contSecond] = SPLIT[contSecond].replace(":", "");
             if(SPLIT[contSecond].equalsIgnoreCase(LATITUDE))
             {
-                System.out.println(SPLIT[contSecond]);
-                ELEMENT[contFirst] = SPLIT[++contSecond].replace(",", "");
-                System.out.println(ELEMENT[contFirst]);
+                this.message.setLatitude(SPLIT[++contSecond].replace(",", ""));
                 contFirst++;
             }else if(SPLIT[contSecond].equalsIgnoreCase(LONGITUDE))
             {
-                System.out.println(SPLIT[contSecond]);
-                ELEMENT[contFirst] = SPLIT[++contSecond].replace(",", "");
-                System.out.println(ELEMENT[contFirst]);
+                this.message.setLongitude(SPLIT[++contSecond].replace(",", ""));
                 contFirst++;
             } else if (SPLIT[contSecond].equalsIgnoreCase(ALTITUDE))
             {
-                System.out.println(SPLIT[contSecond]);
-                ELEMENT[contFirst] = SPLIT[++contSecond].replace(",", "");
-                System.out.println(ELEMENT[contFirst]);
+                this.message.setAltitude(SPLIT[++contSecond].replace(",", ""));
                 contFirst++;
             }else if(SPLIT[contSecond].equalsIgnoreCase(SPEED))
             {
-                System.out.println(SPLIT[contSecond]);
-                ELEMENT[contFirst] = SPLIT[++contSecond].replace(",", "");
-                System.out.println(ELEMENT[contFirst]);
+                this.message.setSpeed(SPLIT[++contSecond].replace(",", ""));
             }
         }
-        return ELEMENT;
     }
 
-    private String encodeURL(String [] dataCof, String [] dataMessage)
+    private String encodeURL()
     {
-        String url = dataCof+"?latitud=" + dataMessage[0] +
-                              "&longitud=" + dataMessage[1] +
-                              "&altitud=" + dataMessage[2] +
-                              "&speed=" + dataMessage[3];
+        String url = this.config.getHost() + "?latitud=" + this.message.getLatitude() +
+                              "&longitud=" + this.message.getLongitude() +
+                              "&altitud=" + this.message.getAltitude() +
+                              "&speed=" + this.message.getSpeed();
         return url;
     }
 }
