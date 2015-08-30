@@ -1,0 +1,49 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/menus"
+    tools:context="mensajeria.tomas.com.conexion.view.Menus"
+    android:orientation="horizontal">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/hostXML"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"
+                android:hint="@string/nombreHostSTHint"
+                android:textSize="@dimen/textSize"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"
+                android:layout_gravity="right"
+                android:text="@string/nombreBotonConf"
+                android:textSize="@dimen/sizeBoton"
+                android:id="@+id/buttonProcessXML"/>
+
+            <TextView
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSize"
+                android:id="@+id/mesanjeXML"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"
+                android:text="Prueba..."
+                android:textSize="@dimen/sizeBoton"
+                android:id="@+id/buttonXML"/>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

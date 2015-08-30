@@ -1,0 +1,14 @@
+<resources>
+    <!-- primera actividad-->
+    <string name="app_name">Conexion DNS</string>
+    <string name="title_activity_menus">Conexion DNS</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="mapas">Mapa</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Fragmento de configuracion  -->
+    <string name="nombreHostSTHint">http://dominio/maps.php</string>
+    <string name="nombreBotonConf">Nuevos Datos</string>
+    <!--Fragmento de mapas -->
+
+</resources>
