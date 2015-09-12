@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,9 +25,10 @@ public class Menus extends Activity implements View.OnClickListener
 {
     private EditText host;
     private TextView textViewMessage;
-    private Button buttonProcess, insert;
+    private Button buttonProcess;
     private ManagerSQL managerSQL;
     private Config config;
+    private CheckBox chek;
     private final String TAG ="Activity";
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,17 +41,16 @@ public class Menus extends Activity implements View.OnClickListener
         this.managerSQL = new ManagerSQL(this.getApplicationContext());
         //Instacia
         this.host = (EditText) this.findViewById(R.id.hostXML);
-        this.insert = (Button) this.findViewById(R.id.buttonXML);
         this.textViewMessage = (TextView) this.findViewById(R.id.mesanjeXML);
         this.buttonProcess = (Button) this.findViewById(R.id.buttonProcessXML);
-        this.readDate();
+        this.chek =(CheckBox) this.findViewById(R.id.enableXML);
         //Event..
         this.buttonProcess.setOnClickListener(this);
-        this.insert.setOnClickListener(this);
-
+        this.chek.setOnClickListener(this);
         //Iniciar servicio
         ServicesHTTP service = new ServicesHTTP();
         service.onService(this.getApplicationContext());
+        readDate();
     }
 
     @Override
@@ -60,13 +61,9 @@ public class Menus extends Activity implements View.OnClickListener
             this.saveDateinDataBase();
             this.readDate();
             this.host.setText("");
-        }else if(view.getId() == this.insert.getId())
+        }else if(view.getId() == this.chek.getId())
         {
-            for(int cont = 0; cont < 100; cont++)
-            {
-                this.managerSQL.insertIntoTableMessage(this.managerSQL.getIdMessage(),"Boton","xx/xx/xx","Hola " +this.managerSQL.getIdMessage());
-            }
-            Toast.makeText(this.getApplicationContext(),"Id: " + this.managerSQL.getIdMessage(),Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getApplicationContext(), "Habilitando el envio de datos", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -74,21 +71,40 @@ public class Menus extends Activity implements View.OnClickListener
     {
         int id = 1;
         String host = (String) this.host.getText().toString();
-        this.managerSQL.insertIntoTableConfig(id, host);
+        if(!this.host.getText().toString().equals(""))
+        {
+            if(this.chek.isChecked())
+            {
+                this.managerSQL.insertIntoTableConfig(id, host, "true");
+            }else
+            {
+                Toast.makeText(this.getApplicationContext(), "El envio de datos desabilitado", Toast.LENGTH_SHORT).show();
+                this.managerSQL.insertIntoTableConfig(id, host, "false");
+            }
+        }else Toast.makeText(this.getApplicationContext(),"Ingrese URL", Toast.LENGTH_SHORT).show();
     }
 
     private void readDate()
     {
+        String message = "";
         try
         {
             String args [] = { "1" };
             Cursor cursor = this.managerSQL.readDateIntoTableConfig("idCofig", args);
             this.config = this.managerSQL.readCursorConfig(cursor);
-            String message = "Elementos Guardados\n\n" + "Host:\n" + config.getHost();
+
+            if(this.config.getHost() != null)
+            {
+                message = "Elementos Guardados\n\n" + "Host:\n" + config.getHost();
+            }
             this.textViewMessage.setText(message);
         }catch (android.database.CursorIndexOutOfBoundsException ex)
         {
             Log.e(TAG, "Cursor de la base de datos vacio.");
+            message = "Elementos Guardados\n\n" + "Host:\n No hay registro del URL";
+        }
+        finally {
+            this.textViewMessage.setText(message);
         }
     }
 

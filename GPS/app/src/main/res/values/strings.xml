@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GPS</string>
+    <string name="hostST">http://www.demo.com/status.php</string>
+    <string name="processST">Habilitar Proceso</string>
+    <string name="timeST">  Time  </string>
+    <string name="buttonST">Guardar Datos</string>}
+    <string name="editST">Editar URL</string>
+    <string-array name="time_array">
+        <item>Segundo</item>
+        <item>Minutos</item>
+        <item>Horas</item>
+    </string-array>
+</resources>

@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".Main">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hostST"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize"
+        android:id="@+id/hostXML"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_top">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/timeST"
+            android:textSize="@dimen/textSize"
+            android:textStyle="bold"
+            android:inputType="time"
+            android:id="@+id/timeXML"/>
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_left"
+            android:entries="@array/time_array"
+            android:id="@+id/sppinerXML" />
+
+    </LinearLayout>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/processST"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        android:id="@+id/processXML"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buttonST"
+            android:textSize="@dimen/textSizeButton"
+            android:id="@+id/saveXML"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editST"
+            android:textSize="@dimen/textSizeButton"
+            android:id="@+id/editXML"/>
+    </LinearLayout>
+
+</LinearLayout>

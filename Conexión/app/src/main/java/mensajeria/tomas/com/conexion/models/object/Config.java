@@ -8,6 +8,7 @@ package mensajeria.tomas.com.conexion.models.object;
 public class Config
 {
 	private String host;
+	private String status;
 
 	public Config()
 	{
@@ -22,5 +23,14 @@ public class Config
 	public void setHost(String host)
 	{
 		this.host = host;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+	public String getStatus()
+	{
+		return this.status;
 	}
 }

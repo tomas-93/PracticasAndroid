@@ -13,6 +13,7 @@ public final class SchemaContract implements BaseColumns
     public static final String TABLE_NAME_CONFIG = "cofig";
     public static final String COLUMN_NAME_ID_CONFIG = "idCofig";
     public static final String COLUMN_NAME_HOST = "host";
+    public static final String COLUMN_NAME_STATUS = "status";
 
     /*
                 Table message
@@ -31,12 +32,14 @@ public final class SchemaContract implements BaseColumns
     protected static final String CREATE_TABLE_CONFIG = "CREATE TABLE " +
             TABLE_NAME_CONFIG + " ("+ COLUMN_NAME_ID_CONFIG +
             " INTEGER PRIMARY KEY, "  +
+            COLUMN_NAME_STATUS + " TEXT, " +
             COLUMN_NAME_HOST + " TEXT " +")";
 
     //Create Table Message
     protected static final String CREATE_TABLE_MESSAGE = "CREATE TABLE " +
             TABLE_NAME_MESSAGE + " (" + COLUMN_NAME_ID_MESSAGE +
-            " INTEGER PRIMARY KEY, " + COLUMN_NAME_PHONE + " TEXT, " + COLUMN_NAME_DATE + " TEXT, " +
+            " INTEGER PRIMARY KEY, " + COLUMN_NAME_PHONE + " TEXT, "
+            + COLUMN_NAME_DATE + " TEXT, " +
             COLUMN_NAME_MESSAGE +" TEXT " +")";
 
     //Delete table Confg

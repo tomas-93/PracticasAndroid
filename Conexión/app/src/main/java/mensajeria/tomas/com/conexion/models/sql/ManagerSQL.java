@@ -41,13 +41,14 @@ public class ManagerSQL
 
     }
 
-    public long insertIntoTableConfig(int idConfig, String host)
+    public long insertIntoTableConfig(int idConfig, String host, String status)
     {
         this.managerDataBase.execSQL(SchemaContract.DELETE_TABLE_CONFIG);
         this.managerDataBase.execSQL(SchemaContract.CREATE_TABLE_CONFIG);
         final ContentValues VALUES = new ContentValues();
         VALUES.put(SchemaContract.COLUMN_NAME_ID_CONFIG, idConfig);
         VALUES.put(SchemaContract.COLUMN_NAME_HOST, host);
+        VALUES.put(SchemaContract.COLUMN_NAME_STATUS, status);
         return this.managerDataBase.insert(SchemaContract.TABLE_NAME_CONFIG,
                 SchemaContract.COLUMN_NAME_NULLABLE,
                 VALUES);
@@ -58,6 +59,7 @@ public class ManagerSQL
         final String COLUMNS [] = {
                                     SchemaContract.COLUMN_NAME_ID_CONFIG,
                                     SchemaContract.COLUMN_NAME_HOST,
+                                    SchemaContract.COLUMN_NAME_STATUS
                                  };
         String where = "";
         Cursor cursor = null;
@@ -79,6 +81,7 @@ public class ManagerSQL
         final String COLUMNS [] = {
                 SchemaContract.COLUMN_NAME_ID_CONFIG,
                 SchemaContract.COLUMN_NAME_HOST,
+                SchemaContract.COLUMN_NAME_STATUS
         };
         return this.managerDataBase.query(SchemaContract.TABLE_NAME_CONFIG,
                     COLUMNS,
@@ -140,6 +143,7 @@ public class ManagerSQL
         Config config = new Config();
         element.moveToFirst();
         config.setHost(element.getString(element.getColumnIndexOrThrow(SchemaContract.COLUMN_NAME_HOST)));
+        config.setStatus(element.getString(element.getColumnIndexOrThrow(SchemaContract.COLUMN_NAME_STATUS)));
         element.close();
         return config;
     }

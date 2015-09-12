@@ -43,7 +43,7 @@ public class MessageReceived extends BroadcastReceiver
         //se crea una constante donde almacenara el objeto mensaje
         final SmsMessage SMS  = this.getMessageReceiver(intent);
         //se verifica que el objeto no sea nulo
-        if(SMS != null)
+        if(SMS != null && this.config.getStatus().equals("true"))
         {
             /*/se verifica que el numero del mesaje que se recibio sea el mismo de que el de la base de datos
             if(SMS.getDisplayOriginatingAddress().equalsIgnoreCase(SMS.getDisplayOriginatingAddress()))

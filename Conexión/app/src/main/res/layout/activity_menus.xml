@@ -28,7 +28,14 @@
                 android:text="@string/nombreBotonConf"
                 android:textSize="@dimen/sizeBoton"
                 android:id="@+id/buttonProcessXML"/>
-
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enableST"
+                android:textStyle="bold"
+                android:textSize="@dimen/textSize"
+                android:id="@+id/enableXML"
+                android:layout_marginTop="@dimen/marginTopConfiguracion"/>
             <TextView
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
@@ -36,13 +43,8 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/textSize"
                 android:id="@+id/mesanjeXML"/>
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/marginTopConfiguracion"
-                android:text="Prueba..."
-                android:textSize="@dimen/sizeBoton"
-                android:id="@+id/buttonXML"/>
+
+
         </LinearLayout>
 
     </ScrollView>

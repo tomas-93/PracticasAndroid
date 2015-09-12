@@ -9,6 +9,7 @@
     <!-- Fragmento de configuracion  -->
     <string name="nombreHostSTHint">http://dominio/maps.php</string>
     <string name="nombreBotonConf">Nuevos Datos</string>
+    <string name="enableST">Habilitar el envio de datos</string>
     <!--Fragmento de mapas -->
 
 </resources>
