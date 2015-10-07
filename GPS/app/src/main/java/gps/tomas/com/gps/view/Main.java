@@ -26,19 +26,8 @@ public class Main extends Activity implements View.OnClickListener, OnItemSelect
     {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
-        //instancia
-        this.saveButtom = (Button) this.findViewById(R.id.saveXML);
-        this.editButtom = (Button) this.findViewById(R.id.editXML);
-        this.host = (EditText) this.findViewById(R.id.hostXML);
-        this.time = (EditText) this.findViewById(R.id.timeXML);
-        this.check = (CheckBox) this.findViewById(R.id.processXML);
-        this.listSpinner = (Spinner) this.findViewById(R.id.sppinerXML);
-        this.message = (TextView) this.findViewById(R.id.messageXML);
-        //Eventos
-        this.saveButtom.setOnClickListener(this);
-        this.editButtom.setOnClickListener(this);
-        this.check.setOnClickListener(this);
-        this.listSpinner.setOnItemSelectedListener(this);
+        //instancia and event
+        this.instance();
     }
     @Override
     public void onClick(View view)
@@ -56,5 +45,20 @@ public class Main extends Activity implements View.OnClickListener, OnItemSelect
     public void onNothingSelected(AdapterView<?> parent)
     {
 
+    }
+    private void instance()
+    {
+        this.saveButtom = (Button) this.findViewById(R.id.saveXML);
+        this.editButtom = (Button) this.findViewById(R.id.editXML);
+        this.host = (EditText) this.findViewById(R.id.hostXML);
+        this.time = (EditText) this.findViewById(R.id.timeXML);
+        this.check = (CheckBox) this.findViewById(R.id.processXML);
+        this.listSpinner = (Spinner) this.findViewById(R.id.sppinerXML);
+        this.message = (TextView) this.findViewById(R.id.messageXML);
+        //Eventos
+        this.saveButtom.setOnClickListener(this);
+        this.editButtom.setOnClickListener(this);
+        this.check.setOnClickListener(this);
+        this.listSpinner.setOnItemSelectedListener(this);
     }
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:id="@+id/menus"
     tools:context="mensajeria.tomas.com.conexion.view.Menus"
     android:orientation="horizontal">
@@ -12,22 +13,22 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/padding">
             <EditText
                 android:id="@+id/hostXML"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/marginTopConfiguracion"
                 android:hint="@string/nombreHostSTHint"
-                android:textSize="@dimen/textSize"/>
-            <Button
+                android:textSize="@dimen/textSizeEdit"/>
+            <EditText
+                android:id="@+id/nameXML"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_marginTop="@dimen/marginTopConfiguracion"
-                android:layout_gravity="right"
-                android:text="@string/nombreBotonConf"
-                android:textSize="@dimen/sizeBoton"
-                android:id="@+id/buttonProcessXML"/>
+                android:hint="@string/name_st"
+                android:textSize="@dimen/textSizeEdit"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -37,14 +38,54 @@
                 android:id="@+id/enableXML"
                 android:layout_marginTop="@dimen/marginTopConfiguracion"/>
             <TextView
-                android:layout_height="fill_parent"
+                android:layout_height="125dp"
                 android:layout_width="fill_parent"
                 android:layout_marginTop="@dimen/marginTopConfiguracion"
                 android:textStyle="bold"
                 android:textSize="@dimen/textSize"
-                android:id="@+id/mesanjeXML"/>
+                android:textColor="#000000"
+                android:id="@+id/mesanjeXML"
+                android:lineSpacingMultiplier="1.5" />
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="120dp">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center"
+                    android:id="@+id/buttonEditHostXML"
+                    android:src="@drawable/ic_dns_white_48dp"
+                    android:background="@drawable/button_mini"
+                    android:elevation="@dimen/elevation"
+                    android:layout_alignTop="@+id/buttonEditNameXML"
+                    android:layout_toLeftOf="@+id/buttonEditNameXML"
+                    android:layout_toStartOf="@+id/buttonEditNameXML"
+                    android:layout_marginRight="29dp"
+                    android:layout_marginEnd="29dp" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/buttonEditNameXML"
+                    android:src="@drawable/ic_phone_iphone_white_48dp"
+                    android:background="@drawable/button_mini"
+                    android:elevation="@dimen/elevation"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonProcessXML"
+                    android:src="@drawable/ic_border_color_white_48dp"
+                    android:background="@drawable/button_mini"
+                    android:elevation="@dimen/elevation"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/buttonEditNameXML"
+                    android:layout_toEndOf="@+id/buttonEditNameXML"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginStart="29dp" />
 
-
+            </RelativeLayout>
         </LinearLayout>
 
     </ScrollView>

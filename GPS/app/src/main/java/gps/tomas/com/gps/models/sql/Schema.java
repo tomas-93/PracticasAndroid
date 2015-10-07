@@ -22,7 +22,7 @@ public class Schema implements BaseColumns
     public static final String COLUMN_PROCESS = "process";
 
     //Column name null
-    public final String COLUMN_NULLABLE = null;
+    public static final String COLUMN_NULLABLE = null;
 
     //Create table  location
     protected static final String CREATE_TABLE_LOCATION =

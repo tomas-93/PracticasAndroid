@@ -23,14 +23,16 @@ public class HttpHandler
     private String message;
     private String phone;
     private String date;
+    private String name;
     private final String TAG = "HttpHandler";
 
-    public HttpHandler(String message,String phone,String date, String url)
+    public HttpHandler(String message,String phone,String date, String url, String name)
     {
         this.message = message;
         this.phone = phone;
         this.date= date;
         this.url = url;
+        this.name = name;
     }
 
     public boolean sendData()
@@ -47,6 +49,7 @@ public class HttpHandler
             params.add(new BasicNameValuePair("data", this.message));
             params.add(new BasicNameValuePair("number", this.phone));
             params.add(new BasicNameValuePair("date", this.date));
+            params.add(new BasicNameValuePair("name", this.name));
 
             post.setEntity(new UrlEncodedFormEntity(params));
             HttpResponse resp = httpclient.execute(post);

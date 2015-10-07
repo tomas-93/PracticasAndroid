@@ -82,7 +82,7 @@ public class ServicesHTTP extends Service implements Runnable
                                 if(this.message == null || this.config == null)
                                     this.encapsulateObjects(tableConfig, tableMessage, sqlite);
                                 Log.i(this.TAG,"ID: "+this.message.getId());
-                                HttpHandler http = new HttpHandler(this.message.getMessage(), this.message.getPhone(), this.message.getDate(),this.config.getHost());
+                                HttpHandler http = new HttpHandler(this.message.getMessage(), this.message.getPhone(), this.message.getDate(),this.config.getHost(), this.config.getName());
                                 if(http.sendData())
                                 {
                                     Log.i(this.TAG, "Se envio datos....");
