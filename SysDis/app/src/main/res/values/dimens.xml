@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">20dp</dimen>
     <dimen name="activity_vertical_top">160dp</dimen>
     <dimen name="elevation">16dp</dimen>
-    <dimen name="elevation_content">12dp</dimen>
+    <dimen name="elevation_content">8dp</dimen>
     <dimen name="margin_top_fragment">10dp</dimen>
     <dimen name="margin_top">50dp</dimen>
     <dimen name="margin_mini">15dp</dimen>
@@ -18,7 +18,7 @@
     <dimen name="heigth">125dp</dimen>
     <dimen name="buton_heigth">35dp</dimen>
     <dimen name="text_size_register">15dp</dimen>
-    <dimen name="activity_vertical_Bottom">20dp</dimen>
+    <dimen name="activity_vertical_Bottom">40dp</dimen>
     <dimen name="padding">20dp</dimen>
     <dimen name="card">5dp</dimen>
     <dimen name="level_1">25sp</dimen>
@@ -26,4 +26,7 @@
     <dimen name="level_3">15sp</dimen>
     <dimen name="level_4">12sp</dimen>
     <dimen name="translation">12dp</dimen>
+    <dimen name="margin_card_start_end">5dp</dimen>
+    <dimen name="margin_card_left_right">8dp</dimen>
+
 </resources>

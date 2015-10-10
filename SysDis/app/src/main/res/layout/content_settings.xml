@@ -11,7 +11,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_settings"
-    tools:context="tomas.com.sysdis.view.activity.Settings">
+    tools:context="tomas.com.sysdis.controller.view.activity.Settings">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

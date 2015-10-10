@@ -7,7 +7,7 @@
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginBottom="@dimen/activity_vertical_Bottom"
     android:layout_marginTop="@dimen/activity_vertical_top"
-    tools:context="tomas.com.sysdis.view.fragments.Student"
+    tools:context="tomas.com.sysdis.controller.view.fragments.Student"
     android:id="@+id/fragment_student"
     android:elevation="@dimen/elevation_content"
     android:background="@color/colorCard">
@@ -20,7 +20,6 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-
             android:orientation="vertical">
             <EditText
                 android:layout_width="fill_parent"
@@ -104,18 +103,18 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_main"
                     android:background="@drawable/button_mini"
-                    android:elevation="@dimen/elevation"
+                    android:elevation="@dimen/elevation_content"
                     android:src="@drawable/ic_reply_white_48dp"
                     android:id="@+id/returnXMLfragment"/>
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_main"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
                     android:src="@drawable/ic_control_point_white_48dp"
                     android:background="@drawable/button_mini"
-                    android:elevation="@dimen/elevation"
+                    android:elevation="@dimen/elevation_content"
                     android:id="@+id/plusXMLfragment"/>
             </RelativeLayout>
         </LinearLayout>

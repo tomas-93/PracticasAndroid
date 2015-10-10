@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="tomas.com.sysdis.view.activity.Settings">
+    tools:context="tomas.com.sysdis.controller.view.activity.Settings">
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"

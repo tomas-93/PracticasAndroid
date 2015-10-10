@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    tools:context="tomas.com.sysdis.view.activity.Register"
+    tools:context="tomas.com.sysdis.controller.view.activity.Register"
     android:id="@+id/activity_fragment">
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="tomas.com.sysdis.view.activity.Register">
+        tools:context="tomas.com.sysdis.controller.view.activity.Register">
 
         <android.support.design.widget.AppBarLayout
             android:layout_height="wrap_content"
