@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/exampleJSONXML"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:text="{name:tomas, last_name:galicia}"
+            style="?android:textAppearance"/>
+        <TextView
+            android:id="@+id/codeJSONXML"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            style="?android:textAppearance"/>
+        <TextView
+            android:id="@+id/exampleJSOArrayNXML"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:text="{nameArray:[{name:tomas, last_name:galicia},{name:pedrita, last_name:solovina}]}"
+            style="?android:textAppearance"/>
+        <TextView
+            android:id="@+id/codeJSOArrayNXML"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            style="?android:textAppearance"/>
+
+    </LinearLayout>
+</ScrollView>

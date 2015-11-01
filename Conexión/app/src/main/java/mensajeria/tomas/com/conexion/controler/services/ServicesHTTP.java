@@ -19,7 +19,7 @@ import mensajeria.tomas.com.conexion.models.sql.SchemaContract;
 /**
  * Created by Tomas on 17/08/2015.
  */
-public class ServicesHTTP extends Service implements Runnable
+public class ServicesHTTP extends Service
 {
     private final String TAG = "ServicesHTTP";
     private Message message;
@@ -36,7 +36,6 @@ public class ServicesHTTP extends Service implements Runnable
     public void onCreate()
     {
         Log.i(this.TAG,"method oncreate");
-        this.thread = new Thread(this);
     }
 
     @Override
@@ -54,12 +53,11 @@ public class ServicesHTTP extends Service implements Runnable
     @Override
     public  int onStartCommand(Intent intent, int flags, int startId)
     {
-        this.thread.start();
-        return this.START_NOT_STICKY;
+        this.run();
+        return START_NOT_STICKY;
     }
 
-    @Override
-    public void run()
+    private void run()
     {
         try
         {
