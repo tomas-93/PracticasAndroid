@@ -43,24 +43,28 @@ public class TestTimerTask extends Fragment
         this.code = (TextView) rootView.findViewById(R.id.taskCodeXML);
         TimerTask timerTask;
         Handler handler = new Handler();
-        handler.post(timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        final Calendar calendar = Calendar.getInstance();
-                        final int hour = calendar.get(Calendar.HOUR);
-                        final int minute = calendar.get(Calendar.MINUTE);
-                        final int secods = calendar.get(Calendar.SECOND);
-                        final String hora = hour + ":" + minute + ":" + secods;
-                        timer.setText(hora, TextView.BufferType.NORMAL);
-                    }
-                });
-            }
-        });
-        Timer timer1 = new Timer("Tareitas");
-        timer1.schedule(timerTask, 0, 1000);
+        try
+        {
+            handler.post(timerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final Calendar calendar = Calendar.getInstance();
+                            final int hour = calendar.get(Calendar.HOUR);
+                            final int minute = calendar.get(Calendar.MINUTE);
+                            final int secods = calendar.get(Calendar.SECOND);
+                            final String hora = hour + ":" + minute + ":" + secods;
+                            timer.setText(hora, TextView.BufferType.NORMAL);
+                        }
+                    });
+                }
+            });
+            Timer timer1 = new Timer("Tareitas");
+            timer1.schedule(timerTask, 0, 1000);
+        }catch (NullPointerException e)
+        { }
         final String cadena = "TimerTask timerTask;\n" +
                 "        Handler handler = new Handler();\n" +
                 "        handler.post(timerTask = new TimerTask()\n" +

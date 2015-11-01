@@ -30,7 +30,6 @@ public class SendMessage
         this.message = this.json_process.getMessage();
         this.listMessage = this.smsManager.divideMessage(this.message);
         this.smsManager.sendMultipartTextMessage(this.number, null, this.listMessage, null, null);
-        Log.w("MESSAGE", "Simulacion. enviando mensaje: " + this.message);
     }
 
     public void setJson(String json)
