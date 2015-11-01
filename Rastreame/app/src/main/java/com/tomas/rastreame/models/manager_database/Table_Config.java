@@ -64,7 +64,7 @@ class Table_Config
         boolean flag = false;
         Cursor cursor = this.sqlite_manager.rawQuery(Schema.SELECT_MAX_ID_MESSAGE, null);
         cursor.moveToFirst();
-        if(cursor.getString(cursor.getColumnIndexOrThrow(Schema._ID)) != null)
+        if(cursor.getCount() > 0)
             flag = true;
         cursor.close();
         return flag;

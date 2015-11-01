@@ -81,6 +81,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/height"
                         android:layout_marginTop="@dimen/marginCard"
+                        android:layout_marginLeft="@dimen/marginCard_left_right"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/textSize"
                         android:textStyle="bold"/>
@@ -128,6 +129,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/height2"
                         android:layout_marginTop="@dimen/marginCard"
+                        android:layout_marginLeft="@dimen/marginCard_left_right"
                         android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/textSize"
                         android:textStyle="bold"/>

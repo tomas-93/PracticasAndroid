@@ -13,7 +13,8 @@ public class DialogMessageNullArgumentsException extends DialogFragment
 {
     private String message;
     private String title;
-    @Override public Dialog onCreateDialog(Bundle saveInstace)
+    @Override
+     public Dialog onCreateDialog(Bundle saveInstace)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
         builder.setTitle(this.title)

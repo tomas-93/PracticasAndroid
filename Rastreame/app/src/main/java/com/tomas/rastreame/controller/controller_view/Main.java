@@ -23,6 +23,7 @@ import com.tomas.rastreame.R;
 import com.tomas.rastreame.controller.controller_services.ServiceReceptionMessage;
 import com.tomas.rastreame.controller.controller_services.ServicesSendMessage;
 import com.tomas.rastreame.controller.controller_view.dialog.DialogMessageNullArgumentsException;
+import com.tomas.rastreame.controller.controller_view.dialog.Info;
 import com.tomas.rastreame.models.objects.Config;
 import com.tomas.rastreame.models.manager_database.SQLite_Manager;
 import com.tomas.rastreame.utils.exception.NullArgumentsException;
@@ -46,9 +47,6 @@ public class Main extends AppCompatActivity implements OnClickListener
         this.setSupportActionBar(toolbar);
         //instace
         this.instace();
-        //handler
-
-
     }
 
     @Override
@@ -74,7 +72,6 @@ public class Main extends AppCompatActivity implements OnClickListener
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
         this.getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -82,17 +79,13 @@ public class Main extends AppCompatActivity implements OnClickListener
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings)
         {
+            Info info = new Info();
+            info.show(this.getFragmentManager(), "Dialog");
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -221,6 +214,9 @@ public class Main extends AppCompatActivity implements OnClickListener
             //Guardar elementos a la base de datos
             this.sqLite_manager.insertDataConfig(this.config);
             this.loadInfo();
+            this.urlReception.setText("", TextView.BufferType.NORMAL);
+            this.urlSend.setText("", TextView.BufferType.NORMAL);
+            this.nameDevice.setText("", TextView.BufferType.NORMAL);
         }catch (NullArgumentsException e)
         {
             final String title = "Error, No se puede guardar los datos.";
