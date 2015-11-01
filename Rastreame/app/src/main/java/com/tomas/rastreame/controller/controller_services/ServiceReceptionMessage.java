@@ -69,7 +69,7 @@ public class ServiceReceptionMessage extends Service
     }
     private void startServiceSendMessage(Context context)
     {
-        context.startService(new Intent(context, ServicesSendMessage.class));
+        context.startService(new Intent(context, ServiceReceptionMessage.class));
     }
     private boolean onStartService(Class<?> classService, Context context)
     {

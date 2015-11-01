@@ -28,6 +28,7 @@ class Table_Message
     {
         String [] COLUMNS =
                             {
+                                Schema._ID,
                                 Schema.MESSAGE_COLUMN_CONTAINER_MESSAGE,
                                 Schema.MESSAGE_COLUMN_NUMBER_MESSAGE,
                                 Schema.MESSAGE_COLUMN_DATE,
@@ -38,11 +39,12 @@ class Table_Message
     }
     protected ArrayList<Message> readCursor(Cursor cursor)
     {
-        ArrayList<Message> list = new ArrayList();
+        ArrayList<Message> list = new ArrayList<>();
         cursor.moveToFirst();
         for(int count = 0; count < cursor.getCount(); count++)
         {
             Message message = new Message();
+            message.setId(cursor.getInt(cursor.getColumnIndexOrThrow(Schema._ID)));
             message.setBody(cursor.getString(cursor.getColumnIndexOrThrow(Schema.MESSAGE_COLUMN_CONTAINER_MESSAGE)));
             message.setNumberMessage(cursor.getString(cursor.getColumnIndexOrThrow(Schema.MESSAGE_COLUMN_NUMBER_MESSAGE)));
             message.setDate(cursor.getString(cursor.getColumnIndexOrThrow(Schema.MESSAGE_COLUMN_DATE)));

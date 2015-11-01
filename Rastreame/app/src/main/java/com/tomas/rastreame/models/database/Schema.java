@@ -27,20 +27,20 @@ public class Schema implements BaseColumns
 
     //Create Table
 
-    protected static final String CREATE_TABLE_CONFIG = "CREATE TABLE " + TABLE_CONFIG +"("+
+    protected static final String CREATE_TABLE_CONFIG = "CREATE TABLE " + TABLE_CONFIG +" ("+
             BaseColumns._ID + " INTEGER PRIMARY KEY, "  +
             CONFIG_COLUMN_HOST_SHIPPING_MESSAGE + " TEXT, " +
             CONFIG_COLUMN_NAME_DEVICE + " TEXT, " +
             CONFIG_COLUMN_STATUS_OPERATION + " TEXT, " +
             CONFIG_COLUMN_HOST_RECEPTION + " TEXT );" ;
 
-    protected static final String CREATE_TABLE_MESSAGE = "CREATE TABLE " + TABLE_MESSAGE + "("+
+    protected static final String CREATE_TABLE_MESSAGE = "CREATE TABLE " + TABLE_MESSAGE + " ("+
             BaseColumns._ID + " INTEGER PRIMARY KEY, " +
-            MESSAGE_COLUMN_NUMBER_MESSAGE + " TEXT , " +
-            MESSAGE_COLUMN_CONTAINER_MESSAGE + "TEXT, " +
-            MESSAGE_COLUMN_DATE + "TEXT, "+
-            MESSAGE_COLUMN_HOUR_MINUTE + "TEXT, " +
-            MESSAGE_COLUMN_SECONDS + "TEXT );";
+            MESSAGE_COLUMN_NUMBER_MESSAGE + " TEXT, " +
+            MESSAGE_COLUMN_CONTAINER_MESSAGE + " TEXT, " +
+            MESSAGE_COLUMN_DATE + " TEXT, "+
+            MESSAGE_COLUMN_HOUR_MINUTE + " TEXT, " +
+            MESSAGE_COLUMN_SECONDS + " TEXT );";
 
     //Drop
 

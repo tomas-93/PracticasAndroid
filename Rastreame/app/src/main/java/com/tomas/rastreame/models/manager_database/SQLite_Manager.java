@@ -30,24 +30,16 @@ public class SQLite_Manager
         this.table_message = new Table_Message(this.sqlite_manager);
     }
 
-    public void insertDataConfig(Config config)throws NullPointerException, SQLiteConstraintException
+    public void insertDataConfig(Config config)throws SQLiteConstraintException
     {
-        if(config.getHostReception() != null &&
-                config.getHostSendMessage() != null &&
-                config.getNameDevice() != null &&
-                config.getStatusOperation() != null)
-        {
-            final ContentValues CONTENVALUES = new ContentValues();
-            final int id = 1;
-            CONTENVALUES.put(Schema._ID, id);
-            CONTENVALUES.put(Schema.CONFIG_COLUMN_HOST_RECEPTION, config.getHostReception());
-            CONTENVALUES.put(Schema.CONFIG_COLUMN_HOST_SHIPPING_MESSAGE, config.getHostSendMessage());
-            CONTENVALUES.put(Schema.CONFIG_COLUMN_NAME_DEVICE, config.getNameDevice());
-            CONTENVALUES.put(Schema.CONFIG_COLUMN_STATUS_OPERATION, config.getNameDevice());
-            this.table_config.insertIntoToTableConfig(CONTENVALUES);
-        }else throw new NullPointerException("No puede tener los campos vacios");
-
-
+        final ContentValues CONTENVALUES = new ContentValues();
+        final int id = 1;
+        CONTENVALUES.put(Schema._ID, id);
+        CONTENVALUES.put(Schema.CONFIG_COLUMN_HOST_RECEPTION, config.getHostReception());
+        CONTENVALUES.put(Schema.CONFIG_COLUMN_HOST_SHIPPING_MESSAGE, config.getHostSendMessage());
+        CONTENVALUES.put(Schema.CONFIG_COLUMN_NAME_DEVICE, config.getNameDevice());
+        CONTENVALUES.put(Schema.CONFIG_COLUMN_STATUS_OPERATION, config.getNameDevice());
+        this.table_config.insertIntoToTableConfig(CONTENVALUES);
     }
     public void insertDataMessage(Message message)
     {

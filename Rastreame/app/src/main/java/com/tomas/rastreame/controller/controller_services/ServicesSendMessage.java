@@ -5,8 +5,10 @@ import android.app.IntentService;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.CursorIndexOutOfBoundsException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 import com.tomas.rastreame.controller.controller_network.HTTPHandle;
 import com.tomas.rastreame.models.manager_database.SQLite_Manager;
@@ -24,6 +26,7 @@ public class ServicesSendMessage extends IntentService
     private SQLite_Manager sqLite_manager;
     private HTTPHandle httpHandle;
     private Config config;
+    private final String TAG = "ServicesSendMessage";
     public ServicesSendMessage()
     {
         super("ServicesSendMessage");
@@ -32,27 +35,33 @@ public class ServicesSendMessage extends IntentService
     @Override
     public void onHandleIntent(Intent intent)
     {
-        if(isConnected())
+        try
         {
-            this.httpHandle = new HTTPHandle();
-            this.sqLite_manager = new SQLite_Manager(this.getApplicationContext());
-            this.listMessage = this.sqLite_manager.readMessage();
-            this.config = this.sqLite_manager.readConfign();
-            if(this.listMessage != null && this.config.getHostSendMessage() != null)
+            if(isConnected())
             {
-                for(Message message: this.listMessage)
+                this.httpHandle = new HTTPHandle();
+                this.sqLite_manager = new SQLite_Manager(this.getApplicationContext());
+                this.listMessage = this.sqLite_manager.readMessage();
+                this.config = this.sqLite_manager.readConfign();
+                if(this.listMessage != null && this.config.getHostSendMessage() != null)
                 {
-                    this.httpHandle.setData(config.getHostSendMessage(),
-                            message.getNumberMessage(),
-                            message.getBody(),
-                            message.getDate(),
-                            message.getHour(),
-                            message.getSeconds());
-                    this.httpHandle.seenMessage();
-                    this.sqLite_manager.removeItemFromTableMessage(message.getId());
-                }
+                    for(Message message: this.listMessage)
+                    {
+                        this.httpHandle.setData(config.getHostSendMessage(),
+                                message.getNumberMessage(),
+                                message.getBody(),
+                                message.getDate(),
+                                message.getHour(),
+                                message.getSeconds());
+                        this.httpHandle.seenMessage();
+                        this.sqLite_manager.removeItemFromTableMessage(message.getId());
+                    }
+                }else this.onHandleIntent(intent);
             }else this.onHandleIntent(intent);
-        }else this.onHandleIntent(intent);
+        }catch (CursorIndexOutOfBoundsException e)
+        {
+            Log.e(this.TAG, e.getMessage());
+        }
     }
     /*
             Service
