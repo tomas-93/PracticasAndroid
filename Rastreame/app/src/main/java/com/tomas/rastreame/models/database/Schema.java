@@ -16,7 +16,7 @@ public class Schema implements BaseColumns
     public static final String CONFIG_COLUMN_NAME_DEVICE  = "nameDevice";
     public static final String CONFIG_COLUMN_STATUS_OPERATION = "statusOperation";
     public static final String CONFIG_COLUMN_HOST_RECEPTION = "hotsReception";
-    //Column Message
+    //Column MessageOBJ
     public static final String MESSAGE_COLUMN_NUMBER_MESSAGE = "numberMessage";
     public static final String MESSAGE_COLUMN_CONTAINER_MESSAGE = "containerMessage";
     public static final String MESSAGE_COLUMN_DATE ="date";

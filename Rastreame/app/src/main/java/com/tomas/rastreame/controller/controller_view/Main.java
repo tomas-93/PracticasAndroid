@@ -3,6 +3,8 @@ package com.tomas.rastreame.controller.controller_view;
 import android.content.Intent;
 import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -44,6 +46,8 @@ public class Main extends AppCompatActivity implements OnClickListener
         this.setSupportActionBar(toolbar);
         //instace
         this.instace();
+        //handler
+
 
     }
 

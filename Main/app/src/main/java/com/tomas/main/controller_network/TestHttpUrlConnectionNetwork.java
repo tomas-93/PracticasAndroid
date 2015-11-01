@@ -26,7 +26,9 @@ public class TestHttpUrlConnectionNetwork
         {
             connection = (HttpURLConnection) new URL("http://192.168.0.2/test/pruebaHTTPUrlConnection.php").openConnection();
 
-            String data = "hora=" + URLEncoder.encode(hours, "UTF-8") +",segundos="+URLEncoder.encode(seconds,"UTF-8") + ",message="+URLEncoder.encode(message, "UTF-8");
+            String data = "hora=" + URLEncoder.encode(hours, "UTF-8") +
+                    "&segundos="+URLEncoder.encode(seconds,"UTF-8") +
+                    "&message="+URLEncoder.encode(message, "UTF-8");
             //Enviar por post
             connection.setDoOutput(true);
             //Especificar tamaño de los datos que se van a enviar

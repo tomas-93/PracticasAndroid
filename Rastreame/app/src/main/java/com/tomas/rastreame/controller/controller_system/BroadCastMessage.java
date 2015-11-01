@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.util.Log;
 
 import com.tomas.rastreame.controller.controller_services.ServicesSendMessage;
 import com.tomas.rastreame.models.manager_database.SQLite_Manager;
 import com.tomas.rastreame.models.objects.Config;
-import com.tomas.rastreame.models.objects.Message;
+import com.tomas.rastreame.models.objects.MessageOBJ;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
@@ -20,7 +22,7 @@ import java.util.Calendar;
 public class BroadCastMessage extends BroadcastReceiver
 {
     private SQLite_Manager sqlite_manager;
-    private Message message;
+    private MessageOBJ message;
     private Config config;
 
     @Override
@@ -36,22 +38,16 @@ public class BroadCastMessage extends BroadcastReceiver
         }
         ServicesSendMessage servicesSendMessage = new ServicesSendMessage();
         servicesSendMessage.onService(context);
+
     }
     private void getDataConfig()
     {
         this.config = this.sqlite_manager.readConfign();
     }
-    private void generatingMessageDataTable()
-    {
-        Calendar calendar = Calendar.getInstance();
-        message.setDate(String.valueOf(calendar.get(Calendar.DATE)));
-        message.setHour(String.valueOf(calendar.get(Calendar.HOUR)));
-        message.setSeconds(String.valueOf(calendar.get(Calendar.SECOND)));
 
-    }
     private SmsMessage getMessageReceiver(Intent intent)
     {
-        this.message = new Message();
+        this.message = new MessageOBJ();
         Bundle bundle = intent.getExtras();
         SmsMessage messagePhone = null;
 
@@ -59,7 +55,7 @@ public class BroadCastMessage extends BroadcastReceiver
         {
             if(bundle != null)
             {
-                Object objects [] = (Object[]) bundle.get("pdu");
+                Object objects [] = (Object[]) bundle.get("pdus");
                 StringBuilder stringMessage = new StringBuilder();
                 for(int cont = 0; cont < objects.length; cont++)
                 {
@@ -83,9 +79,16 @@ public class BroadCastMessage extends BroadcastReceiver
             return messagePhone;
         }
     }
+    private void generatingMessageDataTable()
+    {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat hour = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat seconds = new SimpleDateFormat("ss");
+        message.setDate(String.valueOf(date.format(calendar.getTime())));
+        message.setHour(String.valueOf(hour.format(calendar.getTime())));
+        message.setSeconds(String.valueOf(seconds.format(calendar.getTime())));
 
-
-
-
-
+    }
 }

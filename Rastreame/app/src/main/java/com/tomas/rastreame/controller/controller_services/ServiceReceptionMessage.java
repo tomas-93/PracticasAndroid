@@ -28,7 +28,7 @@ public class ServiceReceptionMessage extends Service
     private NotificationManager notificationManager;
     private Timer timer;
     private TaskTimerControlServer taskTimerControlServer;
-    private final int TIMER_TASK = 1000;
+    private final int TIMER_TASK = 10000;
     private final String NAME_TASK = "ServiceReceptionMessage";
     @Override
     public void onCreate()

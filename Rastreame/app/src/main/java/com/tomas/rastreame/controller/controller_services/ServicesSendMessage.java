@@ -2,7 +2,6 @@ package com.tomas.rastreame.controller.controller_services;
 
 import android.app.ActivityManager;
 import android.app.IntentService;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.CursorIndexOutOfBoundsException;
@@ -13,7 +12,7 @@ import android.util.Log;
 import com.tomas.rastreame.controller.controller_network.HTTPHandle;
 import com.tomas.rastreame.models.manager_database.SQLite_Manager;
 import com.tomas.rastreame.models.objects.Config;
-import com.tomas.rastreame.models.objects.Message;
+import com.tomas.rastreame.models.objects.MessageOBJ;
 
 import java.util.ArrayList;
 
@@ -22,7 +21,7 @@ import java.util.ArrayList;
  */
 public class ServicesSendMessage extends IntentService
 {
-    private ArrayList<Message> listMessage;
+    private ArrayList<MessageOBJ> listMessage;
     private SQLite_Manager sqLite_manager;
     private HTTPHandle httpHandle;
     private Config config;
@@ -45,14 +44,15 @@ public class ServicesSendMessage extends IntentService
                 this.config = this.sqLite_manager.readConfign();
                 if(this.listMessage != null && this.config.getHostSendMessage() != null)
                 {
-                    for(Message message: this.listMessage)
+                    for(MessageOBJ message: this.listMessage)
                     {
                         this.httpHandle.setData(config.getHostSendMessage(),
                                 message.getNumberMessage(),
                                 message.getBody(),
                                 message.getDate(),
                                 message.getHour(),
-                                message.getSeconds());
+                                message.getSeconds(),
+                                this.config.getNameDevice());
                         this.httpHandle.seenMessage();
                         this.sqLite_manager.removeItemFromTableMessage(message.getId());
                     }

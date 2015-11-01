@@ -3,7 +3,7 @@ package com.tomas.rastreame.models.manager_database;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import android.content.ContentValues;
-import com.tomas.rastreame.models.objects.Message;
+import com.tomas.rastreame.models.objects.MessageOBJ;
 import com.tomas.rastreame.models.database.Schema;
 
 import java.util.ArrayList;
@@ -37,13 +37,13 @@ class Table_Message
                             };
         return this.sqlite_manager.query(Schema.TABLE_MESSAGE, COLUMNS, null,null,null,null,null);
     }
-    protected ArrayList<Message> readCursor(Cursor cursor)
+    protected ArrayList<MessageOBJ> readCursor(Cursor cursor)
     {
-        ArrayList<Message> list = new ArrayList<>();
+        ArrayList<MessageOBJ> list = new ArrayList<>();
         cursor.moveToFirst();
         for(int count = 0; count < cursor.getCount(); count++)
         {
-            Message message = new Message();
+            MessageOBJ message = new MessageOBJ();
             message.setId(cursor.getInt(cursor.getColumnIndexOrThrow(Schema._ID)));
             message.setBody(cursor.getString(cursor.getColumnIndexOrThrow(Schema.MESSAGE_COLUMN_CONTAINER_MESSAGE)));
             message.setNumberMessage(cursor.getString(cursor.getColumnIndexOrThrow(Schema.MESSAGE_COLUMN_NUMBER_MESSAGE)));

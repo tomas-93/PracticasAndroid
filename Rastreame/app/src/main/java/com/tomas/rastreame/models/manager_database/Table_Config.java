@@ -52,7 +52,7 @@ class Table_Config
     }
     protected boolean setStatus(ContentValues contentValues)
     {
-        final String ID = Schema._ID +"LIKE ?";
+        final String ID = Schema._ID +" LIKE ?";
         final String SELECT_ARGS [] = {String.valueOf(1)};
 
         if(this.sqlite_manager.update(Schema.TABLE_CONFIG,contentValues, ID, SELECT_ARGS) != -1)

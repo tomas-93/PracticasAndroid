@@ -3,7 +3,7 @@ package com.tomas.rastreame.models.objects;
 /**
  * Created by Tomas on 22/10/2015.
  */
-public class Message
+public class MessageOBJ
 {
     public static final int MESSAGE = 551;
 
@@ -11,12 +11,12 @@ public class Message
     private int id;
     private String numberMessage, body, date, hour, seconds;
 
-    public Message()
+    public MessageOBJ()
     {
 
     }
 
-    public Message(int id, String numberMessage, String body, String date, String hour, String seconds)
+    public MessageOBJ(int id, String numberMessage, String body, String date, String hour, String seconds)
     {
         this.id = id;
         this.numberMessage = numberMessage;

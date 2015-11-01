@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.content.Context;
 
 import com.tomas.rastreame.models.objects.Config;
-import com.tomas.rastreame.models.objects.Message;
+import com.tomas.rastreame.models.objects.MessageOBJ;
 import com.tomas.rastreame.models.database.SQLite;
 import com.tomas.rastreame.models.database.Schema;
 
@@ -38,10 +38,10 @@ public class SQLite_Manager
         CONTENVALUES.put(Schema.CONFIG_COLUMN_HOST_RECEPTION, config.getHostReception());
         CONTENVALUES.put(Schema.CONFIG_COLUMN_HOST_SHIPPING_MESSAGE, config.getHostSendMessage());
         CONTENVALUES.put(Schema.CONFIG_COLUMN_NAME_DEVICE, config.getNameDevice());
-        CONTENVALUES.put(Schema.CONFIG_COLUMN_STATUS_OPERATION, config.getNameDevice());
+        CONTENVALUES.put(Schema.CONFIG_COLUMN_STATUS_OPERATION, config.getStatusOperation());
         this.table_config.insertIntoToTableConfig(CONTENVALUES);
     }
-    public void insertDataMessage(Message message)
+    public void insertDataMessage(MessageOBJ message)
     {
         final ContentValues CONTENVALUES = new ContentValues();
         CONTENVALUES.put(Schema._ID, message.getId());
@@ -59,7 +59,7 @@ public class SQLite_Manager
         return this.table_config.readCursor(this.table_config.readingDataFromTheTableConfig());
     }
 
-    public ArrayList<Message> readMessage()
+    public ArrayList<MessageOBJ> readMessage()
     {
         return this.table_message.readCursor(this.table_message.readingDataFromTheTableMessage());
     }
